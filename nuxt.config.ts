@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxtjs/i18n',
+    '@nuxt/image',
   ],
   hub: {
     database: true,
