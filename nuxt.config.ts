@@ -8,7 +8,12 @@ export default defineNuxtConfig({
   // https://nuxt.com/modules
   modules: [
     '@nuxthub/core',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    '@nuxt/ui',
+    '@nuxt/fonts',
+    '@nuxtjs/i18n',
   ],
   hub: {
     database: true,

@@ -7,12 +7,20 @@ async function uploadImage (e: Event) {
     multiple: false
   })
   const form = e.target as HTMLFormElement
-  await upload(form.image)
-    .then(async () => {
-      form.reset()
-      await refresh()
-    })
-    .catch((err) => alert('Failed to upload image:\n'+ err.data?.message))
+  const input = form.querySelector('input[type="file"]') as HTMLInputElement;
+
+  if (input.files && input.files.length > 0) {
+    const file = input.files[0]; // Get the first uploaded file (assuming only one file is uploaded)
+    console.log(file); // This will log the File object, which contains the uploaded image
+    await upload(form)
+      .then(async () => {
+        form.reset()
+        await refresh()
+      })
+      .catch((err) => alert('Failed to upload image:\n'+ err.data))
+  }
+
+  console.log('form finish')
 }
 
 async function deleteImage (pathname: string) {
