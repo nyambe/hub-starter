@@ -26,6 +26,7 @@ const dropdownItems = computed(() => [
       <UDropdown :items="dropdownItems" :popper="{ placement: 'bottom-end' }" class="md:hidden">
         <UButton color="gray" variant="ghost" icon="i-heroicons-bars-3" />
       </UDropdown>
+      <!-- <ColorMode /> -->
     </div>
   </header>
 </template>

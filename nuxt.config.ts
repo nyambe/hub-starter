@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
   // Nuxt Modules
   // https://nuxt.com/modules
+  colorMode: {
+    preference: 'light'
+  },
   modules: [
     '@nuxthub/core',
     '@nuxt/eslint',
