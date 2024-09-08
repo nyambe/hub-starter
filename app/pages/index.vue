@@ -26,7 +26,7 @@ const heroImage = '/hero-image.webp' // Replace with your actual image path
           size="xl"
           color="white"
           variant="solid"
-          to="/about"
+          to="/blog"
           label="Learn More"
         />
       </div>
