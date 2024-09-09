@@ -8,6 +8,20 @@
       "when": 1725830392135,
       "tag": "0000_daffy_deathbird",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1725857301015,
+      "tag": "0001_dry_talon",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1725857640174,
+      "tag": "0002_narrow_james_howlett",
+      "breakpoints": true
     }
   ]
 }

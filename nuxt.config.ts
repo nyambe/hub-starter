@@ -28,8 +28,9 @@ export default defineNuxtConfig({
   nitro: {
     experimental: {
       // Enable Server API documentation within NuxtHub
-      openAPI: true
-    }
+      openAPI: true,
+      tasks: true
+    },
   },
   // Development
   devtools: { enabled: true },
