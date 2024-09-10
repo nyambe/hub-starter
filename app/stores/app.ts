@@ -32,6 +32,49 @@ export const useAppStore = defineStore('app', () => {
     }
   }
 
+  const addMenuItem = async (item: Omit<MenuItem, 'id'>) => {
+    try {
+      const newItem = await $fetch<MenuItem>('/api/menu', {
+        method: 'POST',
+        body: item,
+      })
+      menuItems.value.push(newItem)
+      return newItem
+    } catch (error) {
+      console.error('Error adding menu item:', error)
+      throw error
+    }
+  }
+
+  const updateMenuItem = async (id: number, item: Partial<MenuItem>) => {
+    try {
+      const updatedItem = await $fetch<MenuItem>(`/api/menu/${id}`, {
+        method: 'PATCH',
+        body: item,
+      })
+      const index = menuItems.value.findIndex(i => i.id === id)
+      if (index !== -1) {
+        menuItems.value[index] = updatedItem
+      }
+      return updatedItem
+    } catch (error) {
+      console.error('Error updating menu item:', error)
+      throw error
+    }
+  }
+
+  const deleteMenuItem = async (id: number) => {
+    try {
+      await $fetch(`/api/menu/${id}`, {
+        method: 'DELETE',
+      })
+      menuItems.value = menuItems.value.filter(item => item.id !== id)
+    } catch (error) {
+      console.error('Error deleting menu item:', error)
+      throw error
+    }
+  }
+
   // Function to get a hierarchical menu structure
   const menuStructure = computed(() => {
     const itemMap = new Map(menuItems.value.map(item => [item.id, { ...item }]))
@@ -103,6 +146,9 @@ export const useAppStore = defineStore('app', () => {
     renderMenuItem,
     isMenuOpen,
     toggleMenu,
-    renderMenuItems
+    renderMenuItems,
+    addMenuItem,
+    updateMenuItem,
+    deleteMenuItem,
   }
 })
