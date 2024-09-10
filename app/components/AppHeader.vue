@@ -38,12 +38,11 @@ onMounted(() => {
 
       <!-- Mobile Menu -->
       <div v-show="state.isMenuOpen" class="md:hidden">
-        <ul class="py-2">
-          <pre>
-            {{ state.menuStructure }}
-          </pre>
-          <!-- <component :is="state.renderMenuItems(state.menuStructure)" /> -->
-        </ul>
+        <ul class="flex flex-col space-x-2">
+            <li v-for="item in state.menuStructure" :key="item.id">
+              <component :is="state.renderMenuItem(item)" class="text-gray-600 hover:text-gray-800" />
+            </li>
+          </ul>
       </div>
     </div>
   </header>
