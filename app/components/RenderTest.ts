@@ -21,7 +21,7 @@ export default defineComponent({
   setup(props) {
     const renderMenuItem = (item: MenuItem): VNode => {
       const children = item.children && item.children.length > 0
-        ? h('ul', { class: 'absolute hidden group-hover:block bg-white shadow-md' }, 
+        ? h('ul', { class: 'md:absolute hidden group-hover:block bg-white shadow-md' }, 
             item.children.map(child => renderMenuItem(child)))
         : null;
 

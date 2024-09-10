@@ -22,9 +22,10 @@ onMounted(() => {
         <!-- Desktop Menu -->
         <nav class="hidden md:block">
           <ul class="flex space-x-4">
-            <li v-for="item in state.menuStructure" :key="item.id">
+            <RenderTest :items="state.menuStructure" />
+            <!-- <li v-for="item in state.menuStructure" :key="item.id">
               <component :is="state.renderMenuItem(item)" class="text-gray-600 hover:text-gray-800" />
-            </li>
+            </li> -->
           </ul>
         </nav>
 
