@@ -2,7 +2,7 @@
 import { useChat } from 'ai/vue'
 import { ref, watch } from 'vue'
 
-const systemPrompt = ref('You are a motivational coach guru focus on the meaning of life, short ambiguous answers, and a positive attitude.')
+const systemPrompt = ref('')
 const { messages, input, handleSubmit, isLoading, stop, error, reload } = useChat({
   initialMessages: [{ role: 'system', content: systemPrompt.value }],
 })
