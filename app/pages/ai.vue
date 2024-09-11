@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { useChat } from '@ai-sdk/vue'
-import { ref } from 'vue'
+import { useChat } from 'ai/vue'
+import { ref, watch } from 'vue'
 
 const systemPrompt = ref('')
+const { messages, input, handleSubmit, isLoading, stop, error, reload } = useChat({
+  initialMessages: [{ role: 'system', content: systemPrompt.value }],
+})
 
-const { messages, input, handleSubmit, isLoading, stop, error, reload } = useChat()
 const chatContainer = ref<HTMLElement | null>(null)
 
 const scrollToBottom = () => {
@@ -17,15 +19,39 @@ const wrappedHandleSubmit = async (event: Event) => {
   await handleSubmit(event)
   scrollToBottom()
 }
+
+// Update system message when systemPrompt changes
+watch(systemPrompt, (newPrompt) => {
+  const systemMessageIndex = messages.value.findIndex(m => m.role === 'system')
+  if (systemMessageIndex !== -1) {
+    messages.value[systemMessageIndex].content = newPrompt
+  } else {
+    messages.value.unshift({ role: 'system', content: newPrompt })
+  }
+})
 </script>
 
 <template>
   <div class="chat-container">
+    <UCard class="mb-4">
+      <UFormGroup label="System Prompt">
+        <UTextarea
+          v-model="systemPrompt"
+          placeholder="Enter system prompt here..."
+          :ui="{ wrapper: 'w-full' }"
+          autoresize
+        />
+      </UFormGroup>
+    </UCard>
     <div ref="chatContainer" class="messages-container">
       <UCard v-for="m in messages" :key="m.id" class="message-card" :ui="{ body: { padding: 'px-4 py-2' } }">
         <template #header>
-          <span class="font-bold" :class="m.role === 'user' ? 'text-blue-600' : 'text-green-600'">
-            {{ m.role === 'user' ? 'You' : 'AI' }}
+          <span class="font-bold" :class="{
+            'text-blue-600': m.role === 'user',
+            'text-green-600': m.role === 'assistant',
+            'text-purple-600': m.role === 'system'
+          }">
+            {{ m.role === 'user' ? 'You' : m.role === 'assistant' ? 'AI' : 'System' }}
           </span>
         </template>
         <p class="text-sm">{{ m.content }}</p>
