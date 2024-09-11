@@ -2,7 +2,7 @@
 import { useChat } from 'ai/vue'
 import { ref, watch } from 'vue'
 
-const systemPrompt = ref('')
+const systemPrompt = ref('You are a motivational coach guru focus on the meaning of life, short ambiguous answers, and a positive attitude.')
 const { messages, input, handleSubmit, isLoading, stop, error, reload } = useChat({
   initialMessages: [{ role: 'system', content: systemPrompt.value }],
 })
@@ -28,6 +28,15 @@ watch(systemPrompt, (newPrompt) => {
   } else {
     messages.value.unshift({ role: 'system', content: newPrompt })
   }
+})
+
+useSeoMeta({
+  title: 'AI Chat Interface by @samiebuka',
+  description: 'Engage in an AI-powered conversation using this chat interface. Created by @samiebuka.',
+  ogTitle: 'AI Chat Interface | @samiebuka',
+  ogDescription: 'Experience intelligent conversations with our AI chat interface. Powered by Vercel AI SDK and created by @samiebuka.',
+  ogImage:  '/hero-image.webp', // Replace with your actual Open Graph image path
+  twitterCard: 'summary_large_image',
 })
 </script>
 
