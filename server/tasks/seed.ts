@@ -1,8 +1,3 @@
-export enum MenuItemType {
-  INTERNAL = 'internal',
-  EXTERNAL = 'external',
-  ANCHOR = 'anchor',
-}
 
 
 export default defineTask({
@@ -12,79 +7,65 @@ export default defineTask({
   },
   async run() {
     console.log('Running DB seed task...')
-		const menuItemsArray = [
-			{
-				label: 'Home',
-				to: '/',
-				parentId: null,
-				order: 1,
-				type: 'internal',
-			},
-			{
-				label: 'About',
-				to: '/about',
-				parentId: null,
-				order: 2,
-				type: 'internal',
-			},
-			{
-				label: 'Services',
-				to: '/services',
-				parentId: null,
-				order: 3,
-				type: 'internal',
-			},
-			{
-				label: 'Web Design',
-				to: '/services/web-design',
-				parentId: 3,
-				order: 1,
-				type: 'internal',
-			},
-			{
-				label: 'SEO',
-				to: '/services/seo',
-				parentId: 3,
-				order: 2,
-				type: 'internal',
-			},
-			{
-				label: 'Portfolio',
-				to: '/portfolio',
-				parentId: null,
-				order: 4,
-				type: 'internal',
-			},
-			{
-				label: 'Contact',
-				to: '/contact',
-				parentId: null,
-				order: 5,
-				type: 'internal',
-			},
-			{
-				label: 'Blog',
-				to: 'https://blog.example.com',
-				parentId: null,
-				order: 6,
-				type: 'external',
-			},
-			{
-				label: 'Terms of Service',
-				to: '/terms#service',
-				parentId: null,
-				order: 7,
-				type: 'anchor',
-			},
-			{
-				label: 'Privacy Policy',
-				to: '/terms#privacy',
-				parentId: null,
-				order: 8,
-				type: 'anchor',
-			},
-		];
-    await useDrizzle().insert(tables.menuItems).values(menuItemsArray)
+		const feedData = [
+      { 
+        title: 'Nuxt 3', 
+        description: 'Modern Vue.js framework', 
+        icon: 'i-simple-icons-nuxtdotjs',
+        to: '/nuxt',
+        order: 1
+      },
+      { 
+        title: 'Pinia', 
+        description: 'Intuitive state management', 
+        icon: 'i-simple-icons-threedotjs',
+        to: '/pinia',
+        order: 2
+      },
+      { 
+        title: 'Drizzle', 
+        description: 'Typescript ORM Database Management', 
+        icon: 'i-ph-database',
+        to: '/drizzle',
+        order: 3
+      },
+      { 
+        title: 'NuxtUI', 
+        description: 'Beautiful UI components', 
+        icon: 'i-simple-icons-nuxtdotjs',
+        to: '/nuxt-ui',
+        order: 4
+      },
+      { 
+        title: 'TypeScript', 
+        description: 'Enhanced developer experience', 
+        icon: 'i-simple-icons-typescript',
+        to: '/typescript',
+        order: 5
+      },
+      { 
+        title: 'AI Models', 
+        description: 'Powerful AI models for chat', 
+        icon: 'i-ph-magic-wand',
+        to: '/ai-models',
+        order: 6
+      },
+      { 
+        title: 'Cache', 
+        description: 'Caching for your application', 
+        icon: 'i-ph-lightning',
+        to: '/cache',
+        order: 7
+      },
+      { 
+        title: 'Key Value', 
+        description: 'Efficient key-value storage', 
+        icon: 'i-ph-coin',
+        to: '/key-value',
+        order: 8
+      },
+    ];
+    await useDrizzle().insert(tables.features).values(feedData)
     return { result: 'success' }
   }
 })

@@ -1,4 +1,5 @@
-import { sqliteTable, integer, text, uniqueIndex } from 'drizzle-orm/sqlite-core'
+// server/database/schema.ts
+import { sqliteTable, integer, text } from 'drizzle-orm/sqlite-core'
  export enum MenuItemType {
   INTERNAL = 'internal',
   EXTERNAL = 'external',
@@ -22,3 +23,12 @@ export const users = sqliteTable('users', {
   avatar: text('avatar').notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
 })
+
+export const features = sqliteTable('features', {
+  id: integer('id').primaryKey({ autoIncrement: true }), // Auto-incrementing primary key
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  icon: text('icon').notNull(),
+  to: text('to'),
+  order: integer('order').notNull(),
+});

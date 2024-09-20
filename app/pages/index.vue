@@ -4,19 +4,18 @@ import { useAppStore } from '~/stores/app'
 const appStore = useAppStore()
 const { siteName } = storeToRefs(appStore)
 
-const features = [
-  { title: 'Nuxt 3', description: 'Modern Vue.js framework', icon: 'i-simple-icons-nuxtdotjs' },
-  { title: 'Pinia', description: 'Intuitive state management', icon: 'i-simple-icons-threedotjs' },
-  { title: 'Drizzle', description: 'Typescript ORM Database Management', icon: 'i-ph-database' },
-  { title: 'NuxtUI', description: 'Beautiful UI components', icon: 'i-simple-icons-nuxtdotjs' },
-  // ai Models i-ph magic wand
-  { title: 'TypeScript', description: 'Enhanced developer experience', icon: 'i-simple-icons-typescript' },
-  { title: 'AI Models', description: 'Powerful AI models for chat', icon: 'i-ph-magic-wand' },
-  { title: 'Cache', description: 'Caching for your application', icon: 'i-ph-lightning' },
-  // Cache i-ph lightning, SQL i-ph database, Key Value i-ph coin, 
-  { title: 'Key Value', description: 'Efficient key-value storage', icon: 'i-ph-coin' },
-  
-]
+const { data: features } = await useFetch('/api/features')
+
+// const features = [
+//   { title: 'Nuxt 3', description: 'Modern Vue.js framework', icon: 'i-simple-icons-nuxtdotjs' },
+//   { title: 'Pinia', description: 'Intuitive state management', icon: 'i-simple-icons-threedotjs' },
+//   { title: 'Drizzle', description: 'Typescript ORM Database Management', icon: 'i-ph-database' },
+//   { title: 'NuxtUI', description: 'Beautiful UI components', icon: 'i-simple-icons-nuxtdotjs' },
+//   { title: 'TypeScript', description: 'Enhanced developer experience', icon: 'i-simple-icons-typescript' },
+//   { title: 'AI Models', description: 'Powerful AI models for chat', icon: 'i-ph-magic-wand' },
+//   { title: 'Cache', description: 'Caching for your application', icon: 'i-ph-lightning' },
+//   { title: 'Key Value', description: 'Efficient key-value storage', icon: 'i-ph-coin' },
+// ]
 const heroImage = '/hero-image.webp' // Replace with your actual image path
 </script>
 
@@ -43,8 +42,8 @@ const heroImage = '/hero-image.webp' // Replace with your actual image path
     <section class="py-16 bg-gray-100">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="feature in features" :key="feature.title" class="bg-white p-6 rounded-lg shadow-md">
+        <div v-if="features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div v-for="feature in features" :key="feature?.id" class="bg-white p-6 rounded-lg shadow-md">
             <UIcon :name="feature.icon" class="text-4xl mb-4 text-primary" />
             <h3 class="text-xl font-semibold mb-2">{{ feature.title }}</h3>
             <p class="text-gray-600">{{ feature.description }}</p>
