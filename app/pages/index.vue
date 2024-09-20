@@ -6,9 +6,16 @@ const { siteName } = storeToRefs(appStore)
 
 const features = [
   { title: 'Nuxt 3', description: 'Modern Vue.js framework', icon: 'i-simple-icons-nuxtdotjs' },
-  { title: 'TypeScript', description: 'Enhanced developer experience', icon: 'i-simple-icons-typescript' },
   { title: 'Pinia', description: 'Intuitive state management', icon: 'i-simple-icons-threedotjs' },
+  { title: 'Drizzle', description: 'Typescript ORM Database Management', icon: 'i-ph-database' },
   { title: 'NuxtUI', description: 'Beautiful UI components', icon: 'i-simple-icons-nuxtdotjs' },
+  // ai Models i-ph magic wand
+  { title: 'TypeScript', description: 'Enhanced developer experience', icon: 'i-simple-icons-typescript' },
+  { title: 'AI Models', description: 'Powerful AI models for chat', icon: 'i-ph-magic-wand' },
+  { title: 'Cache', description: 'Caching for your application', icon: 'i-ph-lightning' },
+  // Cache i-ph lightning, SQL i-ph database, Key Value i-ph coin, 
+  { title: 'Key Value', description: 'Efficient key-value storage', icon: 'i-ph-coin' },
+  
 ]
 const heroImage = '/hero-image.webp' // Replace with your actual image path
 </script>
