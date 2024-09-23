@@ -11,10 +11,6 @@ export default defineEventHandler(async (event) => {
   const model = new OpenAIEmbeddings({
     apiKey: config.openaiApiKey,
   })
-  // const conversation = [
-  //   new SystemMessage('You are a helpful assistant.'),
-  //   new HumanMessage('I love programming.'),
-  // ]
 
   const response = await model.embedQuery(conversation)
   return response

@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     openaiApiKey: '',
     anthropicApiKey: '',
     qdrantApiKey: '',
+    envTest: '0123',
+    envTest2: '0000',
   },
   // Nuxt 4 directory structure and features
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
