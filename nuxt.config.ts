@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     openaiApiKey: process.env.NUXT_OPENAI_API_KEY,
     anthropicApiKey: process.env.NUXT_ANTHROPIC_API_KEY,
     qdrantApiKey: process.env.NUXT_QDRANT_API_KEY,
-    envTest: '0123',
+    envTest: process.env.NUXT_ENV_TEST,
     envTest2: process.env.NUXT_ENV_TEST2,
   },
   // Nuxt 4 directory structure and features
