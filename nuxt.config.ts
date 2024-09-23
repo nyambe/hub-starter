@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-07-30',
   runtimeConfig: {
     pineconeApiKey: '',
+    openaiApiKey: '',
+    anthropicApiKey: '',
+    qdrantApiKey: '',
   },
   // Nuxt 4 directory structure and features
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
